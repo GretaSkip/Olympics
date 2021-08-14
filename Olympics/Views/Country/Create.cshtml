@@ -1,0 +1,17 @@
+﻿@model CountryModel
+
+<h4>Enter Country</h4>
+
+
+@using (Html.BeginForm("Create", "Country", FormMethod.Post))
+{
+    <div class="container-full" style="background-color: white; padding: 20px">
+        <div class="container">
+            @Html.LabelFor(x => x.CountryName, "Country")
+            @Html.TextBoxFor(x => x.CountryName)
+            @Html.LabelFor(x => x.ISO3, "Code")
+            @Html.TextBoxFor(x => x.ISO3)
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+}

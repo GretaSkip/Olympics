@@ -27,6 +27,9 @@ namespace Olympics
         {
             services.AddTransient<SqlConnection>(_ => new SqlConnection(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddScoped<AthleteDBService>();
+            services.AddScoped<SportDBService>();
+            services.AddScoped<CountryDBService>();
+            services.AddScoped<ParticipantsService>();
             services.AddControllersWithViews();
         }
 

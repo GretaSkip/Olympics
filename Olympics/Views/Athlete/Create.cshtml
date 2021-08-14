@@ -1,19 +1,26 @@
-﻿@model AthleteModel
+﻿@model ParticipantsModel
 
-<h4>Enter Athlete</h4>
+   
+        <h4>Enter Athlete</h4>
 
-
-@using (Html.BeginForm("Create", "Athlete", FormMethod.Post))
-{
-    <div class="container-full" style="background-color: white; padding: 20px">
-        <div class="container">
-            @Html.LabelFor(x => x.Name)
-            @Html.TextBoxFor(x => x.Name)
-            @Html.LabelFor(x => x.Surname)
-            @Html.TextBoxFor(x => x.Surname)
-            @Html.LabelFor(x => x.Country)
-            @Html.TextBoxFor(x => x.Country)
-            <input type="submit" value="Submit" />
-        </div>
-    </div>
-}
+        @using (Html.BeginForm("Create", "Athlete", FormMethod.Post))
+        {
+            <div class="container-full" style="background-color: white; padding: 20px">
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Athletes[0].Name, "Name")
+                        @Html.TextBoxFor(x => x.Athletes[0].Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Athletes[0].Surname, "Surname")
+                        @Html.TextBoxFor(x => x.Athletes[0].Surname)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Athletes[0].Country_Id, "Select country")
+                        @Html.DropDownListFor(m => m.Athletes[0].Country_Id, new SelectList(Model.Countries, "Id", "CountryName"), "", new { @class = "form-control" })
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+            </div>
+        }
+   

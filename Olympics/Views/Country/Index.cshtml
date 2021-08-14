@@ -1,0 +1,20 @@
+﻿@model List<CountryModel>
+
+<h3>Countries:</h3>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Country</th>
+        <th>Code</th>
+    </tr>
+    @foreach (var item in @Model)
+    {
+        <tr>
+            <td>@item.Id </td>
+            <td>@item.CountryName </td>
+            <td>@item.ISO3 </td>
+
+        </tr>
+    }
+</table>

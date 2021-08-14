@@ -10,30 +10,36 @@ namespace Olympics.Controllers
 {
     public class AthleteController : Controller
     {
+        private ParticipantsService _participantsDB;
+
         private AthleteDBService _athleteDB;
 
-        public AthleteController(AthleteDBService athleteDB)
+        private CountryDBService _countryDB;
+
+
+        public AthleteController(ParticipantsService participantsDB, AthleteDBService athleteDB, CountryDBService countryDB)
         {
+            _participantsDB = participantsDB;
             _athleteDB = athleteDB;
+            _countryDB = countryDB;
         }
 
         public IActionResult Index()
         {
-            return View(_athleteDB.ShowAthletes());
+            return View(_participantsDB.GetAll());
 
         }
 
         public IActionResult Create()
         {
-            AthleteModel newAthlete = new();
-
-            return View(newAthlete);
+            ParticipantsModel model = _participantsDB.AddNew();
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(AthleteModel athlete)
+        public IActionResult Create(List<AthleteModel> athletes)
         {
-            _athleteDB.NewAthlete(athlete);
+            _athleteDB.NewAthlete(athletes[0]);
 
             return RedirectToAction("Index");
         }

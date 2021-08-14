@@ -10,6 +10,11 @@ namespace Olympics.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Country { get; set; }
+        public int Country_Id { get; set; }
+
+        public string CountryName { get; set; }
+
+        public List<SportModel> Sports { get; set; }
+        public CountryModel Country { get; set; }
     }
 }

@@ -7,45 +7,44 @@ using System.Threading.Tasks;
 
 namespace Olympics.Services
 {
-    public class AthleteDBService
+    public class CountryDBService
     {
         private SqlConnection _connection;
 
-        public AthleteDBService(SqlConnection connection)
+        public CountryDBService(SqlConnection connection)
         {
             _connection = connection;
         }
 
-        public List<AthleteModel> GetAthletes()
+       
+        public List<CountryModel> GetCountries()
         {
-            List<AthleteModel> athletes = new();
+            List<CountryModel> countries = new();
 
             _connection.Open();
 
-            using var command = new SqlCommand("SELECT * FROM dbo.AthletesWithCountries;", _connection);
+            using var command = new SqlCommand("SELECT Id, CountryName, ISO3 FROM dbo.CountryTable;", _connection);
             using var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                athletes.Add(new AthleteModel()
+                countries.Add(new CountryModel()
                 {
                     Id = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    Surname = reader.GetString(2),
-                    Country_Id = reader.GetInt32(3),
-                    CountryName = reader.GetString(4)
+                    CountryName = reader.GetString(1),
+                    ISO3 = reader.GetString(2)
                 });
             }
 
             _connection.Close();
 
-            return (athletes);
+            return (countries);
         }
 
-        public void NewAthlete(AthleteModel model)
+        public void NewCountry(CountryModel model)
         {
             _connection.Open();
 
-            string insertText = $"insert into dbo.AthleteTable (Name, Surname, Country_Id) values('{model.Name}', '{model.Surname}', '{model.Country_Id}'); ";
+            string insertText = $"insert into dbo.CountryTable (CountryName, ISO3) values('{model.CountryName}', '{model.ISO3}'); ";
 
             SqlCommand command = new SqlCommand(insertText, _connection);
             command.ExecuteNonQuery();
@@ -53,6 +52,5 @@ namespace Olympics.Services
             _connection.Close();
 
         }
-
     }
 }

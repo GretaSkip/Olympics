@@ -1,4 +1,4 @@
-﻿@model List<AthleteModel>
+﻿@model ParticipantsModel
 
 <h3>Athletes:</h3>
 
@@ -8,13 +8,15 @@
         <th>Name and Surname</th>
         <th>Country</th>
     </tr>
-    @foreach (var item in @Model)
+    @foreach (var item in @Model.Athletes)
     {
 <tr>
     <td>@item.Id </td>
     <td>@item.Name @item.Surname </td>
-    <td>@item.Country </td>
-    
+    @*<td>@item.Country.CountryName </td>*@
+    <td>@item.CountryName </td>
+
+
 </tr>
     }
 </table>

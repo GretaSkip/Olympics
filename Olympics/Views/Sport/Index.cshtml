@@ -1,0 +1,20 @@
+﻿@model List<SportModel>
+
+<h3>Sports:</h3>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Sport</th>
+        <th>Team</th>
+    </tr>
+    @foreach (var item in @Model)
+    {
+        <tr>
+            <td>@item.Id </td>
+            <td>@item.Name </td>
+            <td>@item.TeamActivity </td>
+
+        </tr>
+    }
+</table>
