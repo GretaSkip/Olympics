@@ -14,6 +14,8 @@ namespace Olympics.Models
 
         public string CountryName { get; set; }
 
+        public string SportName { get; set; }
+
         public List<SportModel> Sports { get; set; }
         public CountryModel Country { get; set; }
     }

@@ -7,6 +7,7 @@
         <th>ID</th>
         <th>Name and Surname</th>
         <th>Country</th>
+        <th>Sports</th>
     </tr>
     @foreach (var item in @Model.Athletes)
     {
@@ -15,6 +16,7 @@
     <td>@item.Name @item.Surname </td>
     @*<td>@item.Country.CountryName </td>*@
     <td>@item.CountryName </td>
+    <td>@item.SportName </td>
 
 
 </tr>

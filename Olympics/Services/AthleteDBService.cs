@@ -22,17 +22,18 @@ namespace Olympics.Services
 
             _connection.Open();
 
-            using var command = new SqlCommand("SELECT * FROM dbo.AthletesWithCountries;", _connection);
+            using var command = new SqlCommand("SELECT * FROM dbo.AthletesWithCountriesSports;", _connection);
             using var reader = command.ExecuteReader();
             while (reader.Read())
             {
                 athletes.Add(new AthleteModel()
                 {
-                    Id = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    Surname = reader.GetString(2),
-                    Country_Id = reader.GetInt32(3),
-                    CountryName = reader.GetString(4)
+                    Id = reader.GetInt32(2),
+                    Name = reader.GetString(3),
+                    Surname = reader.GetString(4),
+                    Country_Id = reader.GetInt32(5),
+                    CountryName = reader.GetString(6),
+                    SportName = reader.GetString(7),
                 });
             }
 

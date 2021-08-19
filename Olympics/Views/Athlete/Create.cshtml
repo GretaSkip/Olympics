@@ -19,6 +19,31 @@
                         @Html.LabelFor(m => m.Athletes[0].Country_Id, "Select country")
                         @Html.DropDownListFor(m => m.Athletes[0].Country_Id, new SelectList(Model.Countries, "Id", "CountryName"), "", new { @class = "form-control" })
                     </div>
+                    @Html.Label("Fruits:")
+                    <br />
+                    <br />
+                    @Html.ListBoxFor(m => m.Athletes[0]., Model.Fruits, new { @class = "listbox" })
+                    <br />
+                    <br />
+                    <input type="submit" value="Submit" />
+                    }
+
+                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css"
+                          rel="stylesheet" type="text/css" />
+                    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+                    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+                    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+        $(function () {
+            $('.listbox').multiselect({
+                includeSelectAllOption: true
+            });
+        });
+                    </script>
+
+
+
                     <input class="btn btn-primary" type="submit" value="Submit" />
                 </div>
             </div>
